@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smart Healthcare & Risk Factor Analysis — an interactive healthcare data visualization project built with Tableau Public.">
+  <title>Smart Healthcare | Risk Factor Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root{--ink:#18312d;--muted:#657570;--green:#276b59;--green2:#dcece4;--cream:#f7f6f0;--paper:#fff;--line:#e3e8e2;--orange:#d88754;--shadow:0 18px 55px rgba(28,55,46,.08)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.65}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}.topbar{position:sticky;top:0;z-index:50;background:rgba(247,246,240,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(227,232,226,.9)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:11px;font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.5px}.brand-mark{display:grid;place-items:center;width:39px;height:39px;background:var(--green);color:white;border-radius:13px;font-size:20px}.brand span small{display:block;font:500 10px "DM Sans",sans-serif;color:var(--muted);letter-spacing:1.4px;text-transform:uppercase}.navlinks{display:flex;align-items:center;gap:26px;font-size:13px;font-weight:700;color:#50645d}.navlinks a:hover{color:var(--green)}.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 18px;border-radius:999px;background:var(--green);color:white;border:1px solid var(--green);font-size:13px;font-weight:700;transition:.2s}.nav-cta:hover,.btn:hover{background:#1c5143;transform:translateY(-1px)}.btn.secondary{background:transparent;color:var(--green);border-color:#b7c9bf}.btn.light{background:white;color:var(--green);border-color:white}.menu-toggle{display:none;background:none;border:0;color:var(--ink);font-size:25px}.hero{padding:82px 0 65px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:470px;height:470px;border-radius:50%;background:#e6eee5;right:-160px;top:-190px;z-index:-1}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid #d9e4dc;background:#fdfdf8;border-radius:999px;color:var(--green);font-size:11px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800}.eyebrow i{font-size:14px}.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:55px}.hero h1{font:800 clamp(38px,5.2vw,66px)/1.08 Manrope,sans-serif;letter-spacing:-2.5px;margin:22px 0 20px;max-width:720px}.hero h1 em{font-style:normal;color:var(--green)}.hero p{font-size:16px;color:var(--muted);max-width:620px;margin:0 0 28px}.actions{display:flex;gap:12px;flex-wrap:wrap}.hero-art{position:relative;min-height:340px;border:1px solid #dce5dc;background:linear-gradient(145deg,#e7f0e8,#fdfbf4);border-radius:30px;padding:25px;box-shadow:var(--shadow);overflow:hidden}.art-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:800}.live{display:flex;align-items:center;gap:7px;color:var(--green);font-size:11px}.live:before{content:"";width:7px;height:7px;background:#5caa82;border-radius:50%}.mini-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}.mini-card{background:rgba(255,255,255,.86);border:1px solid #e2e8e0;border-radius:18px;padding:17px}.mini-card span{display:block;color:var(--muted);font-size:11px}.mini-card strong{display:block;font:800 24px Manrope,sans-serif;margin:5px 0}.mini-card i{color:var(--green);font-size:18px}.chart-card{background:white;border:1px solid #e3e9e2;border-radius:18px;margin-top:12px;padding:15px 17px}.bars{height:65px;display:flex;align-items:end;gap:8px;margin-top:10px}.bars span{flex:1;background:#8bb7a0;border-radius:5px 5px 2px 2px}.bars span:nth-child(2n){background:#d6a27c}.bars span:nth-child(1){height:35%}.bars span:nth-child(2){height:58%}.bars span:nth-child(3){height:43%}.bars span:nth-child(4){height:78%}.bars span:nth-child(5){height:60%}.bars span:nth-child(6){height:92%}.bars span:nth-child(7){height:70%}.hero-note{font-size:10px;color:var(--muted);margin-top:10px}.trust-row{display:flex;gap:22px;flex-wrap:wrap;margin-top:29px;color:#687972;font-size:12px;font-weight:700}.trust-row span{display:flex;align-items:center;gap:7px}.trust-row i{color:var(--green)}
+    section{padding:78px 0}.section-head{max-width:700px;margin:0 auto 36px;text-align:center}.kicker{font-size:11px;text-transform:uppercase;letter-spacing:1.8px;color:var(--green);font-weight:800}.section-head h2,.section-title{font:800 clamp(28px,3.3vw,42px)/1.2 Manrope,sans-serif;letter-spacing:-1.2px;margin:10px 0 13px}.section-head p{margin:0;color:var(--muted);font-size:15px}.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}.about-visual{border-radius:26px;background:#e5eee5;padding:28px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.about-visual:after{content:"";position:absolute;width:210px;height:210px;border:1px solid #b9d1c0;border-radius:50%;right:-35px;bottom:-65px;box-shadow:0 0 0 25px rgba(255,255,255,.12),0 0 0 55px rgba(255,255,255,.1)}.visual-icon{font-size:40px;color:var(--green)}.visual-quote{font:700 25px/1.35 Manrope,sans-serif;max-width:290px;position:relative;z-index:1}.visual-caption{font-size:12px;color:#567067;margin-top:20px}.about-copy h2{font:800 34px/1.2 Manrope,sans-serif;letter-spacing:-1px;margin:12px 0 17px}.about-copy p{color:var(--muted)}.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:23px}.feature{display:flex;gap:11px;font-size:13px;font-weight:700}.feature i{color:var(--green);font-size:19px}.soft{background:#eef2eb}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.info-card{background:white;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 8px 25px rgba(28,55,46,.025)}.info-card .iconbox{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:var(--green2);color:var(--green);font-size:20px;margin-bottom:18px}.info-card h3{font:800 17px Manrope,sans-serif;margin:0 0 8px}.info-card p{font-size:13px;color:var(--muted);margin:0}.viz-section{background:#fff}.viz-shell{border:1px solid var(--line);border-radius:24px;background:#fff;overflow:hidden;box-shadow:var(--shadow)}.viz-heading{padding:23px 26px;display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--line)}.viz-heading h3{font:800 20px Manrope,sans-serif;margin:0 0 4px}.viz-heading p{font-size:12px;color:var(--muted);margin:0}.viz-heading .btn{white-space:nowrap;padding:10px 14px}.tableau-wrap{width:100%;padding:10px;min-height:560px}.tableauPlaceholder{width:100%;margin:0 auto}.tableauPlaceholder object{width:100%}.viz-foot{padding:14px 24px;background:#fafbf8;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center}.story-grid{display:grid;grid-template-columns:1fr .8fr;gap:22px;align-items:stretch}.story-intro{background:#e6eee6;border-radius:24px;padding:30px;display:flex;flex-direction:column;justify-content:center}.story-intro h3{font:800 27px/1.2 Manrope,sans-serif;margin:12px 0}.story-intro p{color:#5d7168;font-size:14px}.story-points{display:grid;gap:12px;margin-top:12px}.story-point{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.65);border:1px solid #d9e4d9;border-radius:14px;padding:13px}.story-point i{color:var(--green);font-size:18px}.story-point strong{display:block;font-size:13px}.story-point span{display:block;font-size:12px;color:var(--muted)}.faq-list{max-width:850px;margin:auto;display:grid;gap:11px}.faq-item{background:white;border:1px solid var(--line);border-radius:15px;overflow:hidden}.faq-question{width:100%;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:19px 21px;border:0;background:transparent;text-align:left;color:var(--ink);font-weight:800;cursor:pointer}.faq-question i{color:var(--green);transition:transform .2s}.faq-answer{display:none;padding:0 21px 20px;color:var(--muted);font-size:14px}.faq-item.open .faq-answer{display:block}.faq-item.open .faq-question i{transform:rotate(180deg)}.contact-band{background:var(--green);color:white;border-radius:25px;padding:32px 35px;display:flex;justify-content:space-between;align-items:center;gap:20px}.contact-band h2{font:800 26px Manrope,sans-serif;margin:0 0 6px}.contact-band p{margin:0;color:#d5e7dd;font-size:13px}.contact-band .btn{background:white;color:var(--green);border-color:white;white-space:nowrap}.footer{padding:30px 0 35px;color:var(--muted);font-size:12px}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding-top:23px}.footer strong{color:var(--ink)}.footer-links{display:flex;gap:17px}.footer a:hover{color:var(--green)}.backtop{position:fixed;right:20px;bottom:20px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:white;box-shadow:var(--shadow);z-index:40}
+    @media(max-width:850px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;padding:20px;background:var(--cream);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:17px}.navlinks.show{display:flex}.menu-toggle{display:block}.nav-cta{display:none}.hero{padding-top:55px}.hero-grid,.about-grid,.story-grid{grid-template-columns:1fr}.hero-grid{gap:35px}.hero-art{min-height:300px}.cards{grid-template-columns:1fr}.viz-heading{align-items:flex-start;flex-direction:column}.tableau-wrap{padding:0;min-height:450px}.contact-band{align-items:flex-start;flex-direction:column}.footer-inner{align-items:flex-start;flex-direction:column}.feature-list{grid-template-columns:1fr 1fr}}
+    @media(max-width:480px){.wrap{width:min(100% - 28px,1160px)}.hero h1{letter-spacing:-1.5px}.hero-art{padding:17px}.mini-card{padding:12px}.mini-card strong{font-size:21px}section{padding:58px 0}.feature-list{grid-template-columns:1fr}.viz-heading{padding:19px}.story-intro{padding:22px}.contact-band{padding:25px}.footer-links{flex-wrap:wrap}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="#home"><span class="brand-mark"><i class="bi bi-heart-pulse-fill"></i></span><span>Smart Healthcare<small>Data & Risk Insights</small></span></a>
+    <nav class="navlinks" id="navlinks">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#insights">Highlights</a><a href="#dashboard">Dashboard</a><a href="#story">Story</a><a href="#faq">FAQs</a>
+    </nav>
+    <a class="nav-cta" href="#dashboard">Explore dashboard <i class="bi bi-arrow-up-right"></i></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
+  </div>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><i class="bi bi-activity"></i> Healthcare data visualization project</span>
+        <h1>Smart Healthcare <em>&amp; Risk Factor Analysis</em></h1>
+        <p>Explore healthcare patterns through interactive data visualizations. This project brings patient indicators and lifestyle risk factors into one place to support clearer, data-informed exploration.</p>
+        <div class="actions"><a class="btn" href="#dashboard"><i class="bi bi-bar-chart-line"></i> Explore Dashboard</a><a class="btn secondary" href="#story"><i class="bi bi-journal-richtext"></i> Explore Story</a></div>
+        <div class="trust-row"><span><i class="bi bi-check-circle-fill"></i> Interactive Tableau views</span><span><i class="bi bi-check-circle-fill"></i> Risk-factor exploration</span><span><i class="bi bi-check-circle-fill"></i> Student analytics project</span></div>
+      </div>
+      <div class="hero-art" aria-label="Illustrative healthcare analytics preview">
+        <div class="art-top"><span><i class="bi bi-grid-1x2-fill"></i> HEALTH INSIGHTS</span><span class="live">DATA OVERVIEW</span></div>
+        <div class="mini-cards">
+          <div class="mini-card"><i class="bi bi-people"></i><span>Patient records</span><strong>Explore</strong><span>View dataset patterns</span></div>
+          <div class="mini-card"><i class="bi bi-heart-pulse"></i><span>Health indicators</span><strong>Analyze</strong><span>Compare measures</span></div>
+        </div>
+        <div class="chart-card"><span style="font-size:12px;font-weight:800">Visual patterns at a glance</span><div class="bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="hero-note">Illustrative graphic · explore the live Tableau dashboard below for actual dataset values.</div></div>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-visual"><div class="visual-icon"><i class="bi bi-clipboard2-pulse"></i></div><div><div class="visual-quote">Turning healthcare data into clearer questions and insights.</div><div class="visual-caption">SMART HEALTHCARE &amp; RISK FACTOR ANALYSIS</div></div></div>
+      <div class="about-copy"><span class="kicker">About the project</span><h2>Understand patterns. Explore risk. Ask better questions.</h2><p>This project presents a visual exploration of healthcare data using Tableau Public. The dashboard organizes selected patient and lifestyle indicators into charts, while the story view guides visitors through the visualizations in a sequence.</p><p>It is intended for learning and exploratory analysis—not for diagnosis, individual medical advice, or proving that one factor causes a health outcome.</p><div class="feature-list"><div class="feature"><i class="bi bi-check2-circle"></i><span>Interactive visual dashboard</span></div><div class="feature"><i class="bi bi-check2-circle"></i><span>Story-based presentation</span></div><div class="feature"><i class="bi bi-check2-circle"></i><span>Risk-factor comparisons</span></div><div class="feature"><i class="bi bi-check2-circle"></i><span>Built with Tableau Public</span></div></div></div>
+    </div>
+  </section>
+  <section class="soft" id="insights">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">What you can explore</span><h2>One project. Multiple ways to investigate.</h2><p>Use the dashboard to interact with the charts, then open the story to follow the visual narrative.</p></div>
+      <div class="cards">
+        <article class="info-card"><div class="iconbox"><i class="bi bi-bar-chart-line"></i></div><h3>Patient indicators</h3><p>Review the measures included in the dashboard and compare patterns across the available categories.</p></article>
+        <article class="info-card"><div class="iconbox"><i class="bi bi-activity"></i></div><h3>Lifestyle &amp; risk factors</h3><p>Explore how variables such as exercise, smoking, and alcohol use are represented alongside health indicators in the dataset.</p></article>
+        <article class="info-card"><div class="iconbox"><i class="bi bi-journal-text"></i></div><h3>Guided data story</h3><p>Move through the Tableau story points to view the visualizations as a connected presentation.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="viz-section" id="dashboard">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Explore the data</span><h2>Interactive Healthcare Dashboard</h2><p>Use the embedded Tableau controls to interact with the published dashboard. For the best experience, open it in Tableau Public if it appears cramped on your screen.</p></div>
+      <div class="viz-shell">
+        <div class="viz-heading"><div><h3><i class="bi bi-bar-chart-fill" style="color:var(--green)"></i> Smart Healthcare &amp; Risk Factor Analysis</h3><p>Embedded from Tableau Public · Dashboard view</p></div><a class="btn" href="https://public.tableau.com/" target="_blank" rel="noopener">Open Tableau Public <i class="bi bi-box-arrow-up-right"></i></a></div>
+        <div class="tableau-wrap"><div class="tableauPlaceholder" id="viz1793266208925" style="position:relative"><noscript><a href="https://public.tableau.com/"><img alt="Smart Healthcare & Risk Factor Analysis Dashboard" src="https://public.tableau.com/static/images/Sm/Smarthealthcaredashboard_final/Dashboard1/1_rss.png" style="border:0;width:100%"></a></noscript><object class="tableauViz" style="display:none"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"><param name="embed_code_version" value="3"><param name="site_root" value=""><param name="name" value="Smarthealthcaredashboard_final/Dashboard1"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/Sm/Smarthealthcaredashboard_final/Dashboard1/1.png"><param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en-US"><param name="filter" value="publish=yes"></object></div></div>
+        <div class="viz-foot"><i class="bi bi-info-circle"></i> Values and charts are supplied by the published Tableau workbook. Interpret patterns in the context of the dataset and its limitations.</div>
+      </div>
+    </div>
+  </section>
+  <section id="story">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Follow the visuals</span><h2>Healthcare Data Story</h2><p>A guided presentation of the project’s visualizations, published as a Tableau Story.</p></div>
+      <div class="story-grid">
+        <div class="story-intro"><span class="eyebrow"><i class="bi bi-book-half"></i> Tableau Story</span><h3>Explore the findings, one view at a time.</h3><p>Use the story navigation inside the embedded view to move between story points. Each point can focus attention on a different chart or comparison.</p><div class="story-points"><div class="story-point"><i class="bi bi-1-circle"></i><div><strong>Start with the overview</strong><span>Understand the context of the selected healthcare measures.</span></div></div><div class="story-point"><i class="bi bi-2-circle"></i><div><strong>Compare visual patterns</strong><span>Use the charts to explore differences across categories.</span></div></div><div class="story-point"><i class="bi bi-3-circle"></i><div><strong>Interpret carefully</strong><span>Remember that association does not establish causation.</span></div></div></div></div>
+        <div class="viz-shell"><div class="viz-heading"><div><h3>Story 1</h3><p>Embedded from Tableau Public · Story view</p></div><a class="btn secondary" href="#dashboard">View dashboard <i class="bi bi-arrow-up"></i></a></div><div class="tableau-wrap"><div class="tableauPlaceholder" id="viz1793266452157" style="position:relative"><noscript><a href="https://public.tableau.com/"><img alt="Smart Healthcare Story" src="https://public.tableau.com/static/images/Sm/Smarthealthcaredashboard_final/Story1/1_rss.png" style="border:0;width:100%"></a></noscript><object class="tableauViz" style="display:none"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"><param name="embed_code_version" value="3"><param name="site_root" value=""><param name="name" value="Smarthealthcaredashboard_final/Story1"><param name="tabs" value="no"><param name="toolbar" value="yes"><param name="static_image" value="https://public.tableau.com/static/images/Sm/Smarthealthcaredashboard_final/Story1/1.png"><param name="animate_transition" value="yes"><param name="display_static_image" value="yes"><param name="display_spinner" value="yes"><param name="display_overlay" value="yes"><param name="display_count" value="yes"><param name="language" value="en-US"><param name="filter" value="publish=yes"></object></div></div><div class="viz-foot"><i class="bi bi-mouse"></i> Use the story navigation within the Tableau frame to switch between available story points.</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="soft" id="faq">
+    <div class="wrap"><div class="section-head"><span class="kicker">Quick answers</span><h2>Frequently Asked Questions</h2><p>A few details to help visitors understand the project and use the embedded visualizations.</p></div>
+      <div class="faq-list">
+        <div class="faq-item open"><button class="faq-question" aria-expanded="true">What is this project about? <i class="bi bi-chevron-down"></i></button><div class="faq-answer">It is a healthcare data visualization project that uses Tableau Public to present selected patient indicators and lifestyle risk factors in an interactive dashboard and a guided story.</div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false">How do I use the dashboard? <i class="bi bi-chevron-down"></i></button><div class="faq-answer">Interact with the available charts, filters, and Tableau controls. Depending on the view, selecting a chart mark or filter may update the information shown. Available interactions depend on the published workbook.</div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false">What is the difference between the dashboard and the story? <i class="bi bi-chevron-down"></i></button><div class="faq-answer">The dashboard brings multiple visualizations together for exploration. The story arranges selected views into a sequence so a visitor can follow the analysis step by step.</div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false">Which tool was used to create the visualizations? <i class="bi bi-chevron-down"></i></button><div class="faq-answer">The charts are embedded from Tableau Public. This webpage provides the project introduction and navigation around those published Tableau views.</div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false">Can this project diagnose a health condition? <i class="bi bi-chevron-down"></i></button><div class="faq-answer">No. It is for educational and exploratory data analysis only. It is not a medical device and should not be used for diagnosis, treatment, or personal medical decisions.</div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false">Why might the Tableau view take time to load? <i class="bi bi-chevron-down"></i></button><div class="faq-answer">The embedded workbook loads from Tableau Public, so loading time depends on your internet connection and Tableau’s availability. If it does not load, refresh the page or open the workbook directly on Tableau Public.</div></div>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:25px;padding-bottom:45px">
+    <div class="wrap"><div class="contact-band"><div><h2>Ready to explore the data?</h2><p>Jump into the interactive dashboard or follow the story to explore the visualizations.</p></div><div class="actions"><a class="btn" href="#dashboard">Open Dashboard <i class="bi bi-arrow-right"></i></a><a class="btn" href="#story">View Story <i class="bi bi-journal-richtext"></i></a></div></div></div>
+  </section>
+</main>
+<footer class="footer"><div class="wrap footer-inner"><div><strong>Smart Healthcare &amp; Risk Factor Analysis</strong><br>Educational data visualization project · Tableau Public</div><div class="footer-links"><a href="#home">Home</a><a href="#about">About</a><a href="#dashboard">Dashboard</a><a href="#story">Story</a><a href="#faq">FAQs</a></div><div>© <span id="year"></span> · Built for learning</div></div></footer>
+<a href="#home" class="backtop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
+<script>
+  // Load the published Tableau views responsively while preserving the original workbook paths.
+  function loadTableau(id, desktopHeight, mobileHeight) {
+    const placeholder = document.getElementById(id);
+    if (!placeholder) return;
+    const viz = placeholder.getElementsByTagName('object')[0];
+    function sizeViz() {
+      const width = placeholder.parentElement.clientWidth;
+      viz.style.width = '100%';
+      viz.style.height = (width < 600 ? mobileHeight : Math.max(desktopHeight, Math.round(width * 0.72))) + 'px';
+    }
+    sizeViz();
+    window.addEventListener('resize', sizeViz);
+    const script = document.createElement('script');
+    script.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    placeholder.parentNode.insertBefore(script, placeholder.nextSibling);
+  }
+  loadTableau('viz1793266208925', 720, 900);
+  loadTableau('viz1793266452157', 680, 850);
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.faq-item');
+      const isOpen = item.classList.toggle('open');
+      button.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('navlinks').classList.toggle('show');
+  });
+  document.querySelectorAll('#navlinks a').forEach(link => link.addEventListener('click', () => document.getElementById('navlinks').classList.remove('show')));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
